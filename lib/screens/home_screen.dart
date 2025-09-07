@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:navigate_route/screens/detail_screen.dart';
+import 'package:navigate_route/screens/third_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  static String routeName = '/';
+  static String routeName = '/home';
   const HomeScreen({super.key});
 
   @override
@@ -11,32 +12,34 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Home Screen')),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () async {
-                Navigator.pushNamed(
+                final result = await Navigator.pushNamed(
                   context,
                   DetailScreen.routeName,
+
                   arguments: {
-                    'id': 'PROP-789',
-                    'title': 'ข้อมูลจาก Named Route Args',
+                    'itemId': '4128',
+                    'message': 'This is item detail',
                   },
                 );
+                print("ได้ค่ากลับมาคือ $result");
               },
-              child: const Text('Go to Detail Screen'),
+              child: const Text('Go to Detail Screen.'),
             ),
             ElevatedButton(
               onPressed: () async {
-                Navigator.pushNamed(
+                final result = await Navigator.pushNamed(
                   context,
-                  DetailScreen.routeName,
-                  arguments: {
-                    'id': 'PROP-789',
-                    'title': 'ข้อมูลจาก Named Route Args',
-                  },
+                  ThirdScreen.routeName,
+
+                  arguments: {'itemId': '4128', 'message': 'This is third screen'},
                 );
+                print("ได้ค่ากลับมาคือ $result");
               },
-              child: const Text('Go to Detail Screen'),
+              child: const Text('Go to Third Screen.'),
             ),
           ],
         ),
