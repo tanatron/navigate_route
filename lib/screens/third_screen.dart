@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:navigate_route/providers/message_provider.dart';
 
 class ThirdScreen extends StatelessWidget {
   static String routeName = '/third';
@@ -6,20 +8,20 @@ class ThirdScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+    final messageProvider = Provider.of<MessageProvider>(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text("Third Screen")),
       body: Center(
         child: Column(
           children: [
-            Text('item id: ${args['itemId']}'),
-            Text('Detail: ${args['message']}'),
+            Text("Item id: ${messageProvider.itemId}"),
+            Text("Message: ${messageProvider.message}"),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context, 'item1 detail returned.');
+                messageProvider.setMessage("item3", "Updated from Third Screen!");
               },
-              child: Text("Go Back "),
+              child: const Text("Update Message"),
             ),
           ],
         ),

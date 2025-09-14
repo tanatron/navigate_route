@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:navigate_route/screens/detail_screen.dart';
 import 'package:navigate_route/screens/home_screen.dart';
+import 'package:navigate_route/screens/third_screen.dart';
 import 'package:navigate_route/providers/message_provider.dart';
 
 void main() {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
         DetailScreen.routeName: (context) => const DetailScreen(),
+        ThirdScreen.routeName: (context) => const ThirdScreen(),
       },
     );
   }
